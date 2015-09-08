@@ -35,4 +35,6 @@ MonoBehaviour:
   - PunRespawn
   - RequestForPickupTimes
   - TaggedPlayer
+  - OnRecvData
+  - OnReqData
   DisableAutoOpenWizard: 1
