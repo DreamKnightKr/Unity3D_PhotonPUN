@@ -13,7 +13,7 @@ public class DataTransferIn10Sec : Photon.MonoBehaviour {
 	public GameObject[] icons;
 
 	System.DateTime centuryBegin = new System.DateTime(2001, 1, 1);
-	long elapsedTicks = 0;
+	System.DateTime currentDate;
 
 	
 	// Use this for initialization
@@ -29,9 +29,7 @@ public class DataTransferIn10Sec : Photon.MonoBehaviour {
 	}
 
 	void Update() {
-		System.DateTime currentDate = System.DateTime.UtcNow;
-		elapsedTicks = currentDate.Ticks - centuryBegin.Ticks;
-
+		currentDate = System.DateTime.UtcNow;
 		UpdateTimeIcon (currentDate);
 	}
 
@@ -43,7 +41,12 @@ public class DataTransferIn10Sec : Photon.MonoBehaviour {
 
 	string GetRoomName() {
 		
-		txtRoom.text = (elapsedTicks / (10 * 1000)).ToString ();
+		txtRoom.text = currentDate.Year.ToString () 
+			+ currentDate.Month.ToString () 
+			+ currentDate.Day.ToString ()
+			+ currentDate.Hour.ToString ()
+			+ currentDate.Minute.ToString ()
+			+ (currentDate.Second / 10).ToString ();
 
 		return txtRoom.text;
 	}
